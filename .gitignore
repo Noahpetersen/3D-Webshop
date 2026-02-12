@@ -1,0 +1,50 @@
+# Node modules
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Build outputs
+dist/
+build/
+*.local
+
+# Laravel
+/Backend/vendor/
+/Backend/node_modules/
+/Backend/public/hot
+/Backend/public/storage
+/Backend/storage/*.key
+/Backend/.env
+/Backend/.env.backup
+/Backend/.env.production
+/Backend/.phpunit.result.cache
+/Backend/Homestead.json
+/Backend/Homestead.yaml
+/Backend/auth.json
+/Backend/npm-debug.log
+/Backend/yarn-error.log
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Logs
+logs/
+*.log
+
+# OS
+Thumbs.db
+.DS_Store
+
+# Temporary files
+*.tmp
+*.temp
+.cache/
+
+# Claude directory (conversation history)
+/Claude/
