@@ -7,7 +7,7 @@ export const Route = createFileRoute('/products')({
 
 function ProductsPage() {
   return (
-    <div className="space-y-6 max-w-7xl mx-auto">
+    <div className="p-8 space-y-6 max-w-7xl mx-auto">
       <h1 className="text-4xl font-bold">Products</h1>
       <Products />
     </div>
