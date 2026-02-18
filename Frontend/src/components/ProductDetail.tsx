@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import { Box, ChevronLeft, ShoppingCart } from 'lucide-react'
 import { Link } from '@tanstack/react-router'
+import mountainBike from '../assets/images/Mountain_Bike.png'
 
 interface Modification {
   label: string
@@ -36,7 +37,7 @@ export default function ProductDetail({ name, description, price, category }: Pr
       {/* Back link */}
       <Link
         to="/products"
-        className="inline-flex items-center gap-1.5 text-sm text-gray-500 hover:text-gray-800 transition-colors"
+        className="inline-flex items-center gap-1.5 text-sm text-gray-500 hover:text-gray-800 transition-colors cursor-pointer"
       >
         <ChevronLeft size={16} />
         Back to Products
@@ -48,9 +49,12 @@ export default function ProductDetail({ name, description, price, category }: Pr
         <div className="lg:col-span-2 space-y-2">
           {/* Placeholder image */}
           
-          <div className="rounded-2xl border border-gray-100 bg-gradient-to-br from-gray-50 to-gray-100 aspect-square flex flex-col items-center justify-center gap-3 text-gray-400">
+          <div className="rounded-2xl border border-gray-100 overflow-hidden">
+            <img src={mountainBike} alt="Mountain Bike" className="w-full object-cover" />
+            {/*
             <Box size={64} strokeWidth={1} />
             <span className="text-sm font-medium tracking-wide uppercase">3D Preview</span>
+            */}
           </div>
 
           {/* Name + description */}
@@ -95,7 +99,7 @@ export default function ProductDetail({ name, description, price, category }: Pr
                       <button
                         key={option}
                         onClick={() => handleSelect(mod.label, option)}
-                        className={`px-3 py-1.5 rounded-lg text-sm border transition-all ${
+                        className={`px-3 py-1.5 rounded-lg text-sm border transition-all cursor-pointer ${
                           active
                             ? 'bg-blue-600 text-white border-blue-600 font-medium'
                             : 'bg-white text-gray-600 border-gray-200 hover:border-blue-400 hover:text-blue-600'
@@ -113,7 +117,7 @@ export default function ProductDetail({ name, description, price, category }: Pr
           <hr className="border-gray-100" />
 
           {/* Add to cart */}
-          <button className="w-full flex items-center justify-center gap-2 bg-blue-600 hover:bg-blue-700 active:bg-blue-800 text-white font-semibold py-3 rounded-xl transition-colors">
+          <button className="w-full flex items-center justify-center gap-2 bg-blue-600 hover:bg-blue-700 active:bg-blue-800 text-white font-semibold py-3 rounded-xl transition-colors cursor-pointer">
             <ShoppingCart size={18} />
             Add to Cart
           </button>

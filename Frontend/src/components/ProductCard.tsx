@@ -1,22 +1,29 @@
 import { Tag } from 'lucide-react'
 import { Link } from '@tanstack/react-router'
 import mountainBike from '../assets/images/Mountain_Bike.png'
+import fastBike from '../assets/images/Fast.png'
+import cityBike from '../assets/images/City.png'
+
+const bikeImages = [mountainBike, fastBike, cityBike]
 
 interface ProductCardProps {
   id: number
+  index: number
   name: string
   description: string | null
   category: string | null
 }
 
-export default function ProductCard({ id, name, description, category }: ProductCardProps) {
+export default function ProductCard({ id, index, name, description, category }: ProductCardProps) {
+  const image = bikeImages[index % bikeImages.length]
+
   return (
     <Link
       to="/products/$productId"
       params={{ productId: String(id) }}
-      className="block rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow bg-white overflow-hidden"
+      className="block rounded-xl shadow-sm border border-gray-100 hover:shadow-md transition-shadow bg-white overflow-hidden cursor-pointer"
     >
-      <img src={mountainBike} alt={name} className="w-full object-cover aspect-video" />
+      <img src={image} alt={name} className="w-full object-cover aspect-video" />
       <div className="bg-gradient-to-r from-blue-500 to-indigo-500 h-1 rounded-t-xl" />
       <div className="p-5 space-y-3">
         <div className="flex items-center gap-1.5">

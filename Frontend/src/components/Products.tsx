@@ -54,6 +54,7 @@ export default function Products() {
         <ProductCard
           key={product.id ?? i}
           id={product.id}
+          index={i}
           name={product.name}
           description={product.description}
           category={product.category}

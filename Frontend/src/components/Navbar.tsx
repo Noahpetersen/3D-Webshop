@@ -9,7 +9,7 @@ export default function Navbar() {
           <div className="flex items-center justify-center gap-6 flex-1">
             <Link
               to="/"
-              className="flex items-center gap-6"
+              className="flex items-center gap-6 cursor-pointer"
               activeProps={{ className: 'text-blue-700' }}
               inactiveProps={{ className: 'text-gray-700 hover:text-gray-900' }}
             >
@@ -17,6 +17,7 @@ export default function Navbar() {
             </Link>
              <Link
               to="/products"
+              className="cursor-pointer"
               activeProps={{ className: 'text-blue-700 font-semibold' }}
               inactiveProps={{ className: 'text-gray-700 hover:text-gray-900' }}
             >
@@ -24,13 +25,14 @@ export default function Navbar() {
             </Link>
             <Link
               to="/demo"
+              className="cursor-pointer"
               activeProps={{ className: 'text-blue-700 font-semibold' }}
               inactiveProps={{ className: 'text-gray-700 hover:text-gray-900' }}
             >
               Demo
             </Link>
           </div>
-          <Link to="/cart" className="text-gray-700 hover:text-gray-900">
+          <Link to="/cart" className="text-gray-700 hover:text-gray-900 cursor-pointer">
             <ShoppingCart size={24} />
           </Link>
         </nav>
