@@ -1,7 +1,8 @@
-import { useEffect, useState } from 'react'
-import { Box, ChevronLeft, ShoppingCart } from 'lucide-react'
+import { useState } from 'react'
+import { ChevronLeft, ShoppingCart } from 'lucide-react'
 import { Link } from '@tanstack/react-router'
 import mountainBike from '../assets/images/Mountain_Bike.png'
+import { useCartStore } from '../store/cartStore'
 
 interface Modification {
   label: string
@@ -23,13 +24,24 @@ interface ProductDetailProps {
   category: string | null
 }
 
-export default function ProductDetail({ name, description, price, category }: ProductDetailProps) {
+export default function ProductDetail({ id, name, description, price, category }: ProductDetailProps) {
   const [selected, setSelected] = useState<Record<string, string>>(() =>
     Object.fromEntries(MODIFICATIONS.map((m) => [m.label, m.options[0]])),
   )
+  const addItem = useCartStore((state) => state.addItem)
 
   function handleSelect(label: string, option: string) {
     setSelected((prev) => ({ ...prev, [label]: option }))
+  }
+
+  function handleAddToCart() {
+    addItem({
+      productId: Number(id),
+      name,
+      price,
+      modifications: selected,
+      image: mountainBike,
+    })
   }
 
   return (
@@ -117,7 +129,10 @@ export default function ProductDetail({ name, description, price, category }: Pr
           <hr className="border-gray-100" />
 
           {/* Add to cart */}
-          <button className="w-full flex items-center justify-center gap-2 bg-blue-600 hover:bg-blue-700 active:bg-blue-800 text-white font-semibold py-3 rounded-xl transition-colors cursor-pointer">
+          <button
+            onClick={handleAddToCart}
+            className="w-full flex items-center justify-center gap-2 bg-blue-600 hover:bg-blue-700 active:bg-blue-800 text-white font-semibold py-3 rounded-xl transition-colors cursor-pointer"
+          >
             <ShoppingCart size={18} />
             Add to Cart
           </button>
