@@ -20,7 +20,13 @@ class ProductController extends Controller
 
     public function show(Product $product): ProductResource
     {
-        $product->loadMissing('category');
+        // 'modifierOptions.modifier' is a nested eager load — the dot notation means:
+        //   1. Load all modifier_options linked to this product (via the pivot JOIN)
+        //   2. For each option, also load its parent modifier in the same batch
+        // Total: 4 queries regardless of how many options the product has.
+        // Without this: 1 query per option to fetch its modifier (N+1 problem).
+        $product->loadMissing(['category', 'modifierOptions.modifier']);
+
         return new ProductResource($product);
     }
 }
