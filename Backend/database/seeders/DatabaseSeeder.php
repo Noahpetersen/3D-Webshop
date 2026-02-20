@@ -21,5 +21,11 @@ class DatabaseSeeder extends Seeder
             'name' => 'Test User',
             'email' => 'test@example.com',
         ]);
+
+        $this->call([
+            CategorySeeder::class,
+            ModifierSeeder::class,  // must run before ProductSeeder (products sync() against option IDs)
+            ProductSeeder::class,
+        ]);
     }
 }
