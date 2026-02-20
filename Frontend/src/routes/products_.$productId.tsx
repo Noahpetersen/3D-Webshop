@@ -1,21 +1,7 @@
 import { createFileRoute } from '@tanstack/react-router'
 import { useQuery, useQueryClient } from '@tanstack/react-query'
 import ProductDetail from '../components/ProductDetail'
-
-interface ListProduct {
-  id: number
-  name: string
-  description: string | null
-  category: string | null
-}
-
-interface Product {
-  id: number
-  name: string
-  description: string | null
-  price: number | undefined
-  category: string | null
-}
+import type { ListProduct, DetailProduct } from '../types/product'
 
 export const Route = createFileRoute('/products_/$productId')({
   component: ProductDetailPage,
@@ -25,7 +11,7 @@ function ProductDetailPage() {
   const { productId } = Route.useParams()
   const queryClient = useQueryClient()
 
-  const { data, isLoading, isError, error } = useQuery<Product>({
+  const { data, isLoading, isError, error } = useQuery<DetailProduct>({
     queryKey: ['product', productId],
     queryFn: async () => {
       const res = await fetch(`/api/products/${productId}`)
@@ -33,11 +19,14 @@ function ProductDetailPage() {
       const json = await res.json()
       return json.data
     },
+    // Optimistic placeholder: show name/description/price from the list cache
+    // immediately while the full detail (including modifiers) loads.
+    // modifiers: [] means the modifier UI renders nothing until real data arrives.
     placeholderData: () => {
       const list = queryClient.getQueryData<ListProduct[]>(['products'])
       const match = list?.find((p) => String(p.id) === productId)
       if (!match) return undefined
-      return { ...match, price: undefined }
+      return { ...match, modifiers: [] }
     },
   })
 
@@ -70,13 +59,7 @@ function ProductDetailPage() {
           {(error as Error).message}
         </div>
       ) : data ? (
-        <ProductDetail
-          id={data.id}
-          name={data.name}
-          description={data.description}
-          price={data.price}
-          category={data.category}
-        />
+        <ProductDetail product={data} />
       ) : null}
     </div>
   )

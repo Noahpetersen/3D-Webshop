@@ -4,7 +4,7 @@ import { persist } from 'zustand/middleware'
 export interface CartItem {
   productId: number
   name: string
-  price: number | undefined
+  price: number // always known at add-to-cart time (base_price + adjustments)
   quantity: number
   modifications: Record<string, string>
   image: string
@@ -75,6 +75,6 @@ export function useCartCount() {
 
 export function useCartTotal() {
   return useCartStore((state) =>
-    state.items.reduce((sum, item) => sum + (item.price ?? 0) * item.quantity, 0),
+    state.items.reduce((sum, item) => sum + item.price * item.quantity, 0),
   )
 }
