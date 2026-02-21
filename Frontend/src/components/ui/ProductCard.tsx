@@ -1,8 +1,8 @@
 import { Tag } from 'lucide-react'
 import { Link } from '@tanstack/react-router'
-import mountainBike from '../assets/images/Mountain_Bike.png'
-import fastBike from '../assets/images/Fast.png'
-import cityBike from '../assets/images/City.png'
+import mountainBike from '../../assets/images/Mountain_Bike.png'
+import fastBike from '../../assets/images/Fast.png'
+import cityBike from '../../assets/images/City.png'
 
 const bikeImages = [mountainBike, fastBike, cityBike]
 

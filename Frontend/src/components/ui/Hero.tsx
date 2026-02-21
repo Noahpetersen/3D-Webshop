@@ -1,7 +1,7 @@
 import { useEffect, useRef } from 'react'
 import { gsap } from 'gsap'
 import { Link } from '@tanstack/react-router'
-import heroImage from '../assets/images/Hero.png'
+import heroImage from '../../assets/images/Hero.png'
 
 export default function Hero() {
   const containerRef = useRef<HTMLDivElement>(null)

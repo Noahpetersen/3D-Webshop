@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react'
 import { Link } from '@tanstack/react-router'
 import { Home, ShoppingCart } from 'lucide-react'
-import { useCartCount } from '../store/cartStore'
+import { useCartCount } from '../../store/cartStore'
 import CartModal from './CartModal'
 
 export default function Navbar() {

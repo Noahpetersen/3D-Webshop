@@ -1,6 +1,6 @@
 import { createFileRoute } from '@tanstack/react-router'
 import { useQuery, useQueryClient } from '@tanstack/react-query'
-import ProductDetail from '../components/ProductDetail'
+import ProductDetail from '../components/ui/ProductDetail'
 import type { ListProduct, DetailProduct } from '../types/product'
 
 export const Route = createFileRoute('/products_/$productId')({

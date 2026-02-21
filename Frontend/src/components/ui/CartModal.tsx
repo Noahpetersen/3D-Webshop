@@ -1,5 +1,5 @@
 import { Minus, Plus, ShoppingCart, Trash2, X } from 'lucide-react'
-import { useCartStore, useCartTotal } from '../store/cartStore'
+import { useCartStore, useCartTotal } from '../../store/cartStore'
 
 interface CartModalProps {
   onClose: () => void

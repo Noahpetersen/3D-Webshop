@@ -89,7 +89,7 @@ type GLTFResult = GLTF & {
 }
 
 export function Model(props: JSX.IntrinsicElements['group']) {
-  const { nodes, materials } = useGLTF('/mountain_bike.glb') as GLTFResult
+  const { nodes, materials } = useGLTF('/models/mountain_bike.glb') as GLTFResult
   return (
     <group {...props} dispose={null}>
       <group rotation={[-Math.PI / 2, 0, 0]} scale={0.008}>
@@ -174,4 +174,4 @@ export function Model(props: JSX.IntrinsicElements['group']) {
   )
 }
 
-useGLTF.preload('/mountain_bike.glb')
+useGLTF.preload('/models/mountain_bike.glb')

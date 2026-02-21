@@ -1,9 +1,9 @@
 import { useState, useMemo } from 'react'
 import { ChevronLeft, ShoppingCart } from 'lucide-react'
 import { Link } from '@tanstack/react-router'
-import mountainBike from '../assets/images/Mountain_Bike.png'
-import { useCartStore } from '../store/cartStore'
-import type { DetailProduct, ModifierOption } from '../types/product'
+import mountainBike from '../../assets/images/Mountain_Bike.png'
+import { useCartStore } from '../../store/cartStore'
+import type { DetailProduct, ModifierOption } from '../../types/product'
 
 interface ProductDetailProps {
   product: DetailProduct
